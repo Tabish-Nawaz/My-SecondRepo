@@ -6,10 +6,11 @@ function ShowUserMenu() {
         "1 Add Task\n" +
         "2 Update Task\n" +
         "3 Delete Task\n" +
-        "4 Show Task\n" +
-        "5 Switch Task\n" +
-        "6 Sort Alphabetically\n" +
-        "7 Exit\n\n" +
+        "4 Search Task\n" +
+        "5 Show Task\n" +
+        "6 Switch Task\n" +
+        "7 Sort Alphabetically\n" +
+        "8 Exit\n\n" +
         "Enter the number (1 to 5)"
     );
 }
@@ -103,16 +104,33 @@ function SortingAflphabetically() {
    }
 }
 
+function SearchTask() { 
+    let GetValue = prompt("Search Here:"); 
+    let found = false;
+
+    for (let index = 0; index < ArrayOfTask.length; index++) { 
+        if (ArrayOfTask[index] === GetValue) { 
+            alert(`${index + 1}. ${GetValue}`); 
+            found = true;
+            break;
+        }
+    }
+    if (!found) {
+        alert("Something Went Wrong");
+    }
+}
+
 while(true) {
     let choice = ShowUserMenu();
 
     if(choice === '1') AddTask();
     else if(choice === '2') UpdateTask();
     else if(choice === '3') DeleteTask();
-    else if(choice === '4') ShowTask();
-    else if(choice === '5') SwithTask();
-    else if(choice === '6') SortingAflphabetically();
-    else if(choice === '7') {
+    else if(choice === '4') SearchTask();
+    else if(choice === '5') ShowTask();
+    else if(choice === '6') SwithTask();
+    else if(choice === '7') SortingAflphabetically();
+    else if(choice === '8') {
             alert("You want to exit");
             break; 
         } else {
