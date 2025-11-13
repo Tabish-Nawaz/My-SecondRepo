@@ -8,7 +8,8 @@ function ShowUserMenu() {
         "3 Delete Task\n" +
         "4 Show Task\n" +
         "5 Switch Task\n" +
-        "6 Exit\n\n" +
+        "6 Sort Alphabetically\n" +
+        "7 Exit\n\n" +
         "Enter the number (1 to 5)"
     );
 }
@@ -48,8 +49,8 @@ function DeleteTask() {
         alert("Error");
         return;
     }
-
     let index = CollectIndex();
+
     if(index >= 0 && index < ArrayOfTask.length){
         ArrayOfTask.splice(index, 1);
         alert("Task Deleted");
@@ -89,20 +90,32 @@ function SwithTask() {
     ArrayOfTask[Task_index2] = Swap;
 }
 
+function SortingAflphabetically() {
+    if(ArrayOfTask.length === 0){
+            alert("No Task to Sort.");
+            return;
+        }else if(ArrayOfTask.length > 2){
+            let Sort = ArrayOfTask.sort();
+                Sort.forEach((i, list)=> {
+                    list += `${i + 1}. ${list}\n`;
+                });
+            alert(Sort);
+   }
+}
 
 while(true) {
     let choice = ShowUserMenu();
+
     if(choice === '1') AddTask();
     else if(choice === '2') UpdateTask();
     else if(choice === '3') DeleteTask();
     else if(choice === '4') ShowTask();
     else if(choice === '5') SwithTask();
-    else if(choice === '6') {
-        alert("Exiting");
-        break;
-    }else{
-        alert("Please Invalid Number add the number");
+    else if(choice === '6') SortingAflphabetically();
+    else if(choice === '7') {
+            alert("You want to exit");
+            break; 
+        } else {
+        alert("Invalid number. Please enter a valid number.");
     }
 }
-
-
